@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Bills.com Coding Challenge</title>
+
+  <!-- Bootstrap -->
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <script type="text/javascript" src="js/githubEvents.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h2>Show Selected GitHub Events</h2>
+    <form class="form-inline" id="searchForm">
+      <div class="form-group">
+        <label for="owner">Owner:</label>
+        <input type="text" class="form-control" id="owner" value="" autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label for="repo">Repo:</label>
+        <input type="text" class="form-control" id="repo" value="" autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label for="eventType">Event Type:</label>
+        <select class="form-control" id="eventType">
+          <option>Any</option>
+          <option>CheckRunEvent</option>
+          <option>CheckSuiteEvent</option>
+          <option>CommitCommentEvent</option>
+          <option>CreateEvent</option>
+          <option>DeleteEvent</option>
+          <option>DeploymentEvent</option>
+          <option>DeploymentStatusEvent</option>
+          <option>DownloadEvent</option>
+          <option>FollowEvent</option>
+          <option>ForkEvent</option>
+          <option>ForkApplyEvent</option>
+          <option>GistEvent</option>
+          <option>GollumEvent</option>
+          <option>InstallationEvent</option>
+          <option>InstallationRepositoriesEvent</option>
+          <option>IssueCommentEvent</option>
+          <option>IssuesEvent</option>
+          <option>LabelEvent</option>
+          <option>MarketplacePurchaseEvent</option>
+          <option>MemberEvent</option>
+          <option>MembershipEvent</option>
+          <option>MilestoneEvent</option>
+          <option>OrganizationEvent</option>
+          <option>OrgBlockEvent</option>
+          <option>PageBuildEvent</option>
+          <option>ProjectCardEvent</option>
+          <option>ProjectColumnEvent</option>
+          <option>ProjectEvent</option>
+          <option>PublicEvent</option>
+          <option>PullRequestEvent</option>
+          <option>PullRequestReviewEvent</option>
+          <option>PullRequestReviewCommentEvent</option>
+          <option>PushEvent</option>
+          <option>ReleaseEvent</option>
+          <option>RepositoryEvent</option>
+          <option>RepositoryVulnerabilityAlertEvent</option>
+          <option>StatusEvent</option>
+          <option>TeamEvent</option>
+          <option>TeamAddEvent</option>
+          <option>WatchEvent</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
+    </form>
+    <br>
+    <div id="results">
+    </div>
+  </div>
+</body>
+</html>
