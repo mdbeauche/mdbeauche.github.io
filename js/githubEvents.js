@@ -1,6 +1,7 @@
 var GIT_API = "https://api.github.com";
 var USER_AGENT = "mdbeauche";
 
+// query github's api and display results
 function getGitApi(queryUrl) {
   // submit query to github
   $.ajax( {
@@ -57,8 +58,11 @@ function testGitApi() {
 
 $(document).ready(function() {
 
-  // submit button clicked
-  $("#submitButton").on("click", function(e) {
+  // submit button clicked or enter pressed
+  $("#searchForm").submit(function(e) {
+    // prevent browser from reloading page
+    e.preventDefault();
+
     // get form input
     var owner = $("#owner").val();
     var repo = $("#repo").val();
@@ -79,6 +83,7 @@ $(document).ready(function() {
     // GET /repos/:owner/:repo/issues/events
     var queryUrl = GIT_API + "/repos/" + owner + "/" + repo + "/events";
 
+    // run query and display results
     getGitApi(queryUrl);
   });
 });
