@@ -1,1 +1,320 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>
+    Beginner Web Development (with a stack!)
+  </title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <nav id="navbar" class="nav-bar">
+    <header>Beginner Web Development (with a stack!)</header>
+    <a class="nav-link" href="#Overview">Overview</a>
+    <a class="nav-link" href="#Git">Git</a>
+    <a class="nav-link" href="#Node.js">Node.js</a>
+    <a class="nav-link" href="#Express">Express</a>
+    <a class="nav-link" href="#MongoDB">MongoDB</a>
+  </nav>
+  <main id="main-doc">
+    <section class="main-section" id="Overview">
+      <header><h1>Overview</h1></header>
+      <p>
+        Web development comes in many different forms and can mean many different things. This is a simple technical guide to beginning web development using some of the technologies of the currently popular "full stack": Node.js, Express, and MongoDB. Node.js provides a server-side JavaScript runtime environment; Express provides a web server built on Node.js; MongoDB provides document-based persistent data storage; finally, Git is used for version control.
+      </p>
+      <p>This guide is designed for use on <a href="https://www.ubuntu.com">Ubuntu 18.04</a> (a Debian based Linux distribution), and utilizes HTML5 and JavaScript ECMAScript 6. This guide assumes the reader already has rudimentary knowledge of HTML, CSS, and JavaScript fundamentals. The following are resources that can be used to gain a solid background in those fundamentals:
+      </p>
+      <ul>
+        <li><a href="https://www.freecodecamp.org">freeCodeCamp</a>: a robust curriculum of lessons and projects covering all of the web development fundamentals</li>
+        <li><a href="https://www.w3schools.com">W3Schools</a>: a popular web site for learning web technologies online, including tutorials and references</li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference">MDN JavaScript Reference</a>: a repository of facts about the JavaScript language, including documentation of all features</li>
+        <li><a href="https://css-tricks.com/">CSS-Tricks</a>: tips, tricks, and techniques on using Cascading Style Sheets
+        <li><a href="https://codepen.io">CodePen</a>: an online community for testing and showcasing user-created HTML, CSS and JavaScript code snippets</li>
+        <li><a href="https://repl.it">repl.it</a>: a powerful and simple online compiler, IDE, and interpreter for 30+ languages, including JavaScript</li>
+        <li><a href="https://cloudinary.com">Cloudinary</a>: a cloud-based image and video CDN (content delivery network) with free hosting</li>
+        <li><a href="https://glitch.com">Glitch</a>: a collaborative code editor and hosting site for "full stack" web apps</li>
+        <li><a href="https://mlab.com">mLab</a>: a fully managed cloud database service that hosts MongoDB databases</li>
+      </ul>
+    </section>
+    <section class="main-section" id="Git">
+      <header><h1>Git</h1></header>
+      <p>
+        Git is a version control system for tracking changes in computer files and coordinating work on those files among multiple people. Git can help you determine exactly what files changed, who changed them, and why. It can be used for coordinating work among multiple people on a project, and for tracking progress over time by saving “checkpoints”. Git isn’t the only version control system out there, but it’s by far the most popular. Git projects can be hosted on many websites, including <a href="https://github.com">GitHub.com</a>.
+      </p>
+      <h2>Git Installation</h2>
+      <ul>
+        <li>Install Git:
+          <code>
+            $ sudo apt-get install git-core
+          </code>
+        </li>
+        <li>Verify installation:
+          <code>
+            $ git --version
+          </code>
+        </li>
+        <li>Configure Git:
+          <code>
+            $ git config --global user.name "[yourusername]"<br>
+            $ git config --global user.email "[youremailaddress]"<br>
+            $ git config --global color.ui auto
+          </code>
+        </li>
+        <li>Create a new repository in Git in new folder [project-name]:
+          <code>
+            $ git init [project-name]<br>
+            $ cd [project-name]
+          </code>
+        </li>
+        <li>Create a new repository on GitHub: Log in to GitHub.com and go to the GitHub home page. Click on green '+ New repository' button, providing name and brief description
+        </li>
+        <li> Push your first commit with a new readme file:
+          <code>
+            $ echo "# first readme commit" >> README.md<br>
+            $ git add README.md<br>
+            $ git commit -m "first commit"<br>
+            $ git remote add origin https://github.com/[username]/[project-name].git<br>
+            $ git push -u origin master<br>
+          </code>
+        </li>
+      </ul>
+      <h2>Git Usage</h2>
+      <ul>
+        <li>List all new or modified files to be committed:
+          <code>
+            $ git status
+          </code>
+        </li>
+        <li>Show file differences not yet staged:
+          <code>
+            $ git diff
+          </code>
+        </li>
+        <li>To snapshot a file in preparation for versioning:
+          <code>
+            $ git add [file]
+          </code>
+        </li>
+        <li>Unstage file, but preserve its contents:
+          <code>
+            $ git reset [file]
+          </code>
+        </li>
+        <li>Record file snapshots permanently in version history:
+          <code>
+            $ git commit -m "[descriptive message]"
+          </code>
+        </li>
+        <li>Group Changes:
+          <ul>
+            <li>List all local branches in current repository:
+              <code>
+                $ git branch
+              </code>
+            </li>
+            <li>Create a new branch:
+              <code>
+                $ git branch [branch-name]
+              </code>
+            </li>
+            <li>Switch to specified branch and update working directory:
+              <code>
+                $ git checkout [branch-name]
+              </code>
+            </li>
+            <li>Combine specified branch's history into the current branch:
+              <code>
+                $ git merge [branch]
+              </code>
+            </li>
+            <li>Delete the specified branch:
+              <code>
+                $ git branch -d [branch-name]
+              </code>
+            </li>
+          </ul>
+        </li>
+        <li>Synchronize Changes:
+          <ul>
+            <li>Download all history from the repository bookmark:
+              <code>
+                $ git fetch [bookmark]
+              </code>
+            </li>
+            <li>Combine bookmark's branch into current local branch:
+              <code>
+                $ git merge [bookmark]/[branch]
+              </code>
+            </li>
+            <li>Upload all local branch commits to GitHub:
+              <code>
+                $ git push [alias] [branch]
+              </code>
+            </li>
+            <li>Download bookmark history and incorporates changes:
+              <code>
+                $ git pull
+              </code>
+            </li>
+          </ul>
+        <li>For more tips on Git usage, download a <a href="https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf">cheat-sheet</a>
+        </li>
+      </ul>
+    </section>
+    <section class="main-section" id="Node.js">
+      <header><h1>Node.js</h1></header>
+      <p>
+        Node.js is an open-source, cross-platform JavaScript run-time environment that executes JavaScript code server-side. Previously, JavaScript was used primarily for client-side scripting, in which scripts written in JavaScript are embedded in a webpage's HTML and run client-side by a JavaScript engine in the user's web browser. Node.js lets developers run scripts server-side to produce dynamic web page content before the page is sent to the user's web browser. Consequently, Node.js represents a "JavaScript everywhere" paradigm, unifying web application development around a single programming language, rather than different languages for server side and client side scripts. This guide deals with Node.js 4.x (version 9.11.1).
+      </p>
+      <h2>Node.js Installation</h2>
+      <ul>
+        <li>Add NodeSource repository, install Node.js:
+          <code>
+            $ curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -<br>
+            $ sudo apt-get install -y nodejs
+          </code>
+        </li>
+        <li>Verify installation and check version:
+          <code>
+            $ which node<br>
+            $ node --version
+          </code>
+        </li>
+        <li>Install build tools to compile and install native addons:
+          <code>
+            $ sudo apt-get install -y build-essential
+          </code>
+        </li>
+        <li>Verify installation:
+          <code>
+            $ which npm<br>
+            $ npm --version
+          </code>
+        </li>
+      </ul>
+      <h2>Node.js Usage</h2>
+      <ul>
+        <li>Create package.json to initialize Node.js package:
+          <code>
+            $ npm init
+          </code>
+        </li>
+        <li>Start Node.js VM:
+          <code>
+            $ node [project-main].js
+          </code>
+        </li>
+      </ul>
+    </section>
+    <section class="main-section" id="Express">
+      <header><h1>Express</h1></header>
+      <p>
+        Express is a web application framework for Node.js, released as free and open-source software under the MIT License. It is designed for building web applications and APIs. It has been called the de facto standard server framework for Node.js. This guide deals with Express version 4.16.3.
+      </p>
+      <h2>Express Installation</h2>
+      <ul>
+        <li>Install Express locally and save as a dependency in package.json:
+          <code>
+            $ npm install express --save
+          </code>
+        </li>
+      </ul>
+      <h2>Express Usage</h2>
+      <ul>
+        <li>Include Express in project files:
+          <code>
+            # const express = require('express')
+          </code>
+        </li>
+        <li>Create an instance of Express to use:
+          <code>
+            # const app = express()
+          </code>
+        </li>
+        <li>Define behavior for routes:
+          <code>
+            # app.get('/', (request, response) => {<br>
+            # &emsp;// behavior for default route<br>
+            # })
+          </code>
+        </li>
+        <li>Start server listening on [port-number]:
+          <code>
+            # app.listen([port-number], function() {<br>
+            # &emsp;console.log('Server listening on [port-number]')<br>
+            # })
+          </code>
+        </li>
+      </ul>
+    </section>
+    <section class="main-section" id="MongoDB">
+      <header><h1>MongoDB</h1></header>
+      <p>
+        MongoDB is a free and open-source cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with schemas.
+      </p>
+      <h2>MongoDB Installation</h2>
+      <ul>
+        <li>Import public key for Official MongoDB Package:
+          <code>
+            $ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
+          </code>
+        </li>
+         <li>Add Official MongoDB Package repository to Ubuntu:
+          <code>
+            $ echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
+          </code>
+        </li>
+        <li>Install the MongoDB packages:
+          <code>
+            $ sudo apt-get update<br>
+            $ sudo apt-get install -y mongodb-org
+          </code>
+        </li>
+        <li>Install the MongoDB module locally and save as a dependency in package.json:
+          <code>
+            $ npm install mongodb --save
+          </code>
+        </li>
+      </ul>
+      <h2>MongoDB Usage</h2>
+      <ul>
+        <li>Include MongoDB in project files:
+          <code>
+            # const mongodb = require('mongodb')
+          </code>
+        </li>
+        <li>Create a client instance of MongoDB to use:
+          <code>
+            # const mongoClient = mongodb.MongoClient
+          </code>
+        </li>
+        <li>Connect to the client:
+          <code>
+            # mongoClient.connect(mongoUri, (err, client) => {<br>
+            # &emsp;// access the database<br>
+            # &emsp;let db = client.db('[database-name]')<br>
+            # })
+          </code>
+        </li>
+        <li>Add item to collection:
+          <code>
+            # db.collection('[collection-name]').find({[search-fields]}).toArray( (err, res) => {<br>
+            # &emsp;// error handling and callbacks on data in res<br>
+            # })
+          </code>
+        </li>
+        <li>Search collection:
+          <code>
+            # db.collection('[collection-name]').insertOne(item, (err, res) => {<br>
+            # &emsp;// error handling and callbacks on data in res<br>
+            # })
+          </code>
+        </li>
+        <li>Close connection:
+          <code>
+            # client.close()
+          </code>
+        </li>
+      </ul>
+    </section>
+  </main>
+</body>
